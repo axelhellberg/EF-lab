@@ -1,0 +1,47 @@
+﻿@model IEnumerable<EF_lab.Models.CompactDisc>
+
+@{
+    ViewData["Title"] = "My CD's";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.CompactDiscTitle)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ArtistName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Genre)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.CompactDiscTitle)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ArtistName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Genre.GenreName)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.CompactDiscId">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.CompactDiscId">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.CompactDiscId">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
